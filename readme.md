@@ -54,4 +54,3 @@ python weather.py -d Paris
 python weather.py -u imperial
 
 other valid units are 'metric' and 'standart' (Kelvin). 
-
