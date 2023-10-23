@@ -38,6 +38,7 @@ markdown
 
 ### Options
 
+- `-h` : Open the help function
 - `-q <city>`: Query the weather for the specified city.
 - `-k <api-key>`: Set your OpenWeatherMap API key.
 - `-d <default-city>`: Set the default city for weather queries.
