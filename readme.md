@@ -19,7 +19,6 @@ To use the Weather Query Program, open a command-line terminal and run the progr
 
 python weather.py -q <city> [-k <api-key>] [-d <default-city>] [-u <unit>]
 
-markdown
 
 
 ### Options
