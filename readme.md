@@ -54,10 +54,3 @@ python weather.py -d Paris
 
 python weather.py -u imperial
 
-
-
-### Help
-
-To see the available options and their descriptions, you can use the `-h` or `--help` option:
-
-python weather.py -h
