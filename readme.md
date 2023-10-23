@@ -1,7 +1,3 @@
-Certainly! Here's an example of a README file that explains what your program does and how to use it:
-
-markdown
-
 # Weather Query Program
 
 The Weather Query Program is a command-line tool that allows you to retrieve current weather information for a specified city using the OpenWeatherMap API. It also provides options to set a default city, API key, and preferred unit for weather queries.
@@ -16,16 +12,6 @@ The Weather Query Program is a command-line tool that allows you to retrieve cur
 ## Prerequisites
 
 Before using the Weather Query Program, you need to obtain an OpenWeatherMap API key. You can sign up for a free API key on the [OpenWeatherMap website](https://openweathermap.org/api).
-
-## Installation
-
-1. Clone this repository to your local machine using `git clone`.
-2. Install the required Python packages using `pip`:
-
-pip install requests
-
-arduino
-
 
 ## Usage
 
@@ -51,28 +37,23 @@ markdown
 
 python weather.py -q Berlin
 
-vbnet
-
 
 2. Set your API key:
 
 python weather.py -k YOUR_API_KEY
 
-javascript
 
 
 3. Set a default city for weather queries:
 
 python weather.py -d Paris
 
-vbnet
 
 
 4. Set the preferred temperature unit to imperial (Fahrenheit):
 
 python weather.py -u imperial
 
-perl
 
 
 ### Help
