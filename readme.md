@@ -55,3 +55,39 @@ You can also query the weather for a city and set that city as the default city 
 `python WeatherLine.py -u imperial`
 
 other valid units are 'metric' and 'standart' (Kelvin). 
+
+## Making the Program executeable without using 'python' or '.py'
+
+### Create an Executable Script:
+
+Create an executable script that serves as the entry point to your program. This script should be placed in a directory that is included in your system's PATH. This allows you to run your program by simply typing its name in the terminal.
+
+Create a new file, let's call it weatherLine, and make it executable:
+
+`touch weatherLine`
+`chmod +x weatherLine`
+
+### Edit the Script:
+
+Open the weather script in a text editor and define how it should execute your Python program. You should call your Python script with the appropriate interpreter (usually python) and pass any command-line arguments as needed.
+
+Here's an example of what the weather script might look like:
+
+
+`#!/bin/bash`
+
+`python /path/to/your/weatherLine.py "$@"`
+
+In this example, replace /path/to/your/weatherLine.py with the actual path to your Python script. The "$@" allows you to pass all the command-line arguments directly to your Python script.
+
+### Move the Script to a Directory in Your PATH:
+
+To be able to run the script from any location in your terminal, move it to a directory that is included in your system's PATH. Common directories for user scripts include /usr/local/bin or ~/bin. You may need root (administrator) privileges to move it to some directories.
+
+For example, to move the script to /usr/local/bin, use:
+
+`sudo mv weather /usr/local/bin`
+
+Now, you should be able to run your weather command from the terminal:
+
+`weatherLine -q Berlin`
