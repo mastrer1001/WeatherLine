@@ -17,7 +17,7 @@ Before using the Weather Query Program, you need to obtain an OpenWeatherMap API
 
 To use the Weather Query Program, open a command-line terminal and run the program with the following options:
 
-python WeatherLine.py -q <city> [-k <api-key>] [-d <default-city>] [-u <unit>]
+`python WeatherLine.py -q <city> [-k <api-key>] [-d <default-city>] [-u <unit>]`
 
 
 
@@ -35,23 +35,23 @@ You can also query the weather for a city and set that city as the default city 
 1. Query the weather for a specific city:
    
 
-python WeatherLine.py -q Berlin
+`python WeatherLine.py -q <city>`
 
 
 2. Set your API key:
 
-python WeatherLine.py -k YOUR_API_KEY
+`python WeatherLine.py -k YOUR_API_KEY`
 
 
 
 3. Set a default city for weather queries:
 
-python WeatherLine.py -d Paris
+`python WeatherLine.py -d Paris`
 
 
 
 4. Set the preferred temperature unit to imperial (Fahrenheit):
 
-python WeatherLine.py -u imperial
+`python WeatherLine.py -u imperial`
 
 other valid units are 'metric' and 'standart' (Kelvin). 
