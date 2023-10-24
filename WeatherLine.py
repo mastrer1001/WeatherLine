@@ -135,7 +135,7 @@ if __name__ == "__main__":
             print("  -d <default-city> Set the default city for weather queries.")
             sys.exit(0)
         
-        if sys.argv[i] in ["-q", "-k", "-u", "-d"]:
+        if sys.argv[i] in ["-q", "-k", "-u", "-d", "-qd"]:
             if i + 1 < len(sys.argv):
                 args[sys.argv[i]] = sys.argv[i + 1]
                 i += 2
@@ -152,6 +152,10 @@ if __name__ == "__main__":
 
     if api_key:
         update_api_key(api_key)
+
+    if "-qd" in args:
+        city = args["-qd"]
+        update_default_city(city)
 
     if "-u" in args:
         update_default_unit(unit)
