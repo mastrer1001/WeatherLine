@@ -65,6 +65,7 @@ Create an executable script that serves as the entry point to your program. This
 Create a new file, let's call it weatherLine, and make it executable:
 
 `touch weatherLine`
+
 `chmod +x weatherLine`
 
 ### Edit the Script:
