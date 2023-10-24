@@ -85,7 +85,7 @@ def update_api_key(api_key):
 
     with open(CONFIG_FILE, "w") as config_file:
         json.dump(config, config_file)
-def get_weather(city, api_key, unit = "standart"):
+def get_weather(city, api_key, unit = "metric"):
     base_url = 'https://api.openweathermap.org/data/2.5/weather'
 
     params = {
@@ -118,16 +118,12 @@ def get_weather(city, api_key, unit = "standart"):
         print(data)
 
 if __name__ == "__main__":
-    # if len(sys.argv) < 3:
-    #     print("Usage: python weather.py -q <city> [-k <api-key>] [-d <default-city>] [-u <unit>]")        
-    #     sys.exit(1)
-
     args = {}
     i = 1
 
     while i < len(sys.argv):
         if sys.argv[i] == "-h":
-            print("Usage: python weather.py -q <city> [-k <api-key>] [-u <unit>] [-d <default-city>]")
+            print("Usage: python WeatherLine.py [-q <city>] [-k <api-key>] [-u <unit>] [-d <default-city>]")
             print("Options:")
             print("  -q <city>        Query the weather for the specified city.")
             print("  -k <api-key>     Set your OpenWeatherMap API key.")
@@ -175,3 +171,10 @@ if __name__ == "__main__":
     
     if city:
         get_weather(city, api_key, unit)
+    else:
+        print("Usage: python WeatherLine.py [-q <city>] [-k <api-key>] [-u <unit>] [-d <default-city>]")
+        print("Options:")
+        print("  -q <city>        Query the weather for the specified city.")
+        print("  -k <api-key>     Set your OpenWeatherMap API key.")
+        print("  -u <unit>        Set the preferred unit (metric, imperial, standard). Default is metric.")
+        print("  -d <default-city> Set the default city for weather queries.")
