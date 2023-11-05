@@ -85,37 +85,39 @@ def update_api_key(api_key):
 
     with open(CONFIG_FILE, "w") as config_file:
         json.dump(config, config_file)
-def get_weather(city, api_key, unit = "metric"):
-    base_url = 'https://api.openweathermap.org/data/2.5/weather'
+def get_weather(city, api_key, unit="metric"):
+    base_url = 'https://api.openweathermap.org/data/2.5/forecast'
 
     params = {
         'q': city,
         'appid': api_key,
-        'units': unit
+        'units': unit  
     }
 
     response = requests.get(base_url, params=params)
     data = response.json()
 
+    # Define a dictionary to map units to symbols
+    unit_symbols = {
+        "imperial": "°F",
+        "metric": "°C",
+        "standard": "K"
+    }
+
     if response.status_code == 200:
-        weather_description = data['weather'][0]['description']
-        temperature = data['main']['temp']
-
-        # Extract the unit from the API response
-        if unit == "imperial":
-            unit_symbol = "°F"
-        elif unit == "metric":
-            unit_symbol = "°C"
-        else:
-            unit_symbol = "K"
-
-        # Format the temperature with the appropriate unit
-        temperature_with_unit = f"Temperature: {temperature}{unit_symbol}"
-        print(f"Weather in {city}: {weather_description.capitalize()}")
-        print(temperature_with_unit)
+        print(f"Weather forecast for {city} for the next few days (Unit: {unit}):")
+        for forecast in data['list']:
+            timestamp = forecast['dt']
+            date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+            weather_description = forecast['weather'][0]['description']
+            temperature = forecast['main']['temp']
+            unit_symbol = unit_symbols.get(unit, 'K')  
+            print(f"Date: {date}")
+            print(f"Weather: {weather_description.capitalize()}")
+            print(f"Temperature: {temperature}{unit_symbol}")
+            print("------")
     else:
-        print(f"Failed to retrieve weather data for {city}")
-        print(data)
+        print(f"Failed to retrieve weather forecast for {city}")
 
 if __name__ == "__main__":
     args = {}
