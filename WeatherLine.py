@@ -1,6 +1,7 @@
 import sys
 import requests
 import json
+from datetime import datetime
 
 CONFIG_FILE = "config.json"
 
@@ -85,18 +86,23 @@ def update_api_key(api_key):
 
     with open(CONFIG_FILE, "w") as config_file:
         json.dump(config, config_file)
-def get_weather(city, api_key, unit="metric"):
+
+def filter_forecasts(data, days=4):
+    filtered_forecasts = data['list'][::8][:days]
+    return filtered_forecasts
+
+def get_weather(city, api_key, unit="standard", days=4):
     base_url = 'https://api.openweathermap.org/data/2.5/forecast'
 
     params = {
         'q': city,
         'appid': api_key,
-        'units': unit  
+        'units': unit
     }
 
     response = requests.get(base_url, params=params)
     data = response.json()
-
+    
     # Define a dictionary to map units to symbols
     unit_symbols = {
         "imperial": "°F",
@@ -105,19 +111,22 @@ def get_weather(city, api_key, unit="metric"):
     }
 
     if response.status_code == 200:
-        print(f"Weather forecast for {city} for the next few days (Unit: {unit}):")
-        for forecast in data['list']:
+        print(f"Weather forecast for {city} for the next {days} days:")
+        filtered_forecasts = filter_forecasts(data, days)
+
+        for forecast in filtered_forecasts:
             timestamp = forecast['dt']
-            date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
+            date = datetime.utcfromtimestamp(timestamp).strftime('%d/%m/%Y %H:%M:%S')
             weather_description = forecast['weather'][0]['description']
             temperature = forecast['main']['temp']
-            unit_symbol = unit_symbols.get(unit, 'K')  
+            unit_symbol = unit_symbols.get(unit, '°C')
             print(f"Date: {date}")
             print(f"Weather: {weather_description.capitalize()}")
             print(f"Temperature: {temperature}{unit_symbol}")
             print("------")
     else:
-        print(f"Failed to retrieve weather forecast for {city}")
+        print(f"Failed to retrieve daily weather forecast for {city}")
+        print(data)
 
 if __name__ == "__main__":
     args = {}
