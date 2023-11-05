@@ -116,7 +116,7 @@ def get_weather(city, api_key, unit="standard", days=4):
 
         for forecast in filtered_forecasts:
             timestamp = forecast['dt']
-            date = datetime.utcfromtimestamp(timestamp).strftime('%d/%m/%Y %H:%M:%S')
+            date = datetime.utcfromtimestamp(timestamp).strftime('%d.%m.%Y %H:%M:%S')
             weather_description = forecast['weather'][0]['description']
             temperature = forecast['main']['temp']
             unit_symbol = unit_symbols.get(unit, '°C')
