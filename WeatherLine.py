@@ -112,6 +112,7 @@ def get_weather(city, api_key, unit="standard", days=4):
 
     if response.status_code == 200:
         print(f"Weather forecast for {city} for the next {days} days:")
+        print("------")
         filtered_forecasts = filter_forecasts(data, days)
 
         for forecast in filtered_forecasts:
