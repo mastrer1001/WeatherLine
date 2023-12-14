@@ -87,7 +87,7 @@ To be able to run the script from any location in your terminal, move it to a di
 
 For example, to move the script to /usr/local/bin, use:
 
-`sudo mv weather /usr/local/bin`
+`sudo mv weatherLine /usr/local/bin`
 
 Now, you should be able to run your weather command from the terminal:
 
